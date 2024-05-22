@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+    <title>Etch and Sketch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script text="type/javascript">
+        const SIDE = 16;
+        
+        for(let i = 0; i < SIDE; i++) {
+            const row = document.createElement("div");
+            row.className = "row"
+            row.style.display = "flex";
+            row.style.margin = "5px";
+            for(let j = 0; j < SIDE; j++){
+                const column = document.createElement("div");
+                column.className = "col";
+                column.innerHTML = "0";
+                column.style.padding = "5px";
+                column.style.margin = "5px";
+                column.style.border = "solid"
+                column.style.borderColor = "black"
+                row.appendChild(column);
+            }
+            document.body.appendChild(row);
+        }
+    </script>
+</body>
