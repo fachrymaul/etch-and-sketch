@@ -4,25 +4,47 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <button id="new"">New!</button>
+    <div id="grid"></div>
+
     <script text="type/javascript">
         const SIDE = 16;
         
-        for(let i = 0; i < SIDE; i++) {
-            const row = document.createElement("div");
-            row.className = "row"
-            row.style.display = "flex";
-            row.style.margin = "5px";
-            for(let j = 0; j < SIDE; j++){
-                const column = document.createElement("div");
-                column.className = "col";
-                column.innerHTML = "0";
-                column.style.padding = "5px";
-                column.style.margin = "5px";
-                column.style.border = "solid"
-                column.style.borderColor = "black"
-                row.appendChild(column);
+        function displayGrid(side, parent){
+            
+            for (let i = 0; i < side; i++) {
+                const row = document.createElement("div");
+                row.className = "row";
+                for (let j = 0; j < side; j++) {
+                    const column = document.createElement("div");
+                    column.className = "col";
+                    column.addEventListener("mouseover", function() {
+                        const r = Math.floor(Math.random() * 256);
+                        const g = Math.floor(Math.random() * 256);
+                        const b = Math.floor(Math.random() * 256);
+                        column.style.backgroundColor = "rgb(" + r +"," + g + "," + b + ")";
+                    });
+
+                    row.appendChild(column);
+                }
+                parent.appendChild(row);
             }
-            document.body.appendChild(row);
         }
+
+        function main() {
+            let newButton = document.getElementById("new");
+            let grid = document.getElementById("grid");
+            newButton.addEventListener("click", function() {
+                let gridSize = prompt("Enter the grid size number")
+                if(gridSize > 64 || gridSize < 0) {
+                    return;
+                }
+
+                grid.innerHTML = "";
+                displayGrid(gridSize, grid);
+            })
+        }
+
+        main();
     </script>
 </body>

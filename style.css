@@ -1,3 +1,20 @@
-.col:hover {
-    background-color: yellow;
+#new {
+    margin: 10px;
+}
+#grid {
+    border: solid;
+    border-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex: 0 0 auto;
+}
+
+.col {
+    padding: 7px;
 }
